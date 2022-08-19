@@ -1,6 +1,6 @@
 # foodify
 
-A new Flutter Food Delivery App project.
+A new Flutter Food Ordering/Delivery App (Still-in-progress) project.
 
 ## Features
 
