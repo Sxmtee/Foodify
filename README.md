@@ -1,16 +1,22 @@
 # foodify
 
-A new Flutter project.
+A new Flutter Food Ordering/Delivery App (Still-in-progress) project.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+* SplashScreen
+* Carousel Slider
+* Data Model
+* Json
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+![Screenshot_20220809-171216](https://user-images.githubusercontent.com/108900115/183722659-c96a18b7-857a-4c47-b0e5-f12ba582783c.png)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+![Screenshot_20220809-171224](https://user-images.githubusercontent.com/108900115/183722670-e4c04cdb-04bb-4c1d-9572-3a36fc33f25b.png)
+
+
+![Screenshot_20220809-171236](https://user-images.githubusercontent.com/108900115/183722676-6f3bd1f6-118a-4714-a698-6a392e5bf452.png)
+
+
+![Screenshot_20220809-171253](https://user-images.githubusercontent.com/108900115/183722681-135b650e-0b0e-43bb-b6d6-8e5cee02c414.png)
