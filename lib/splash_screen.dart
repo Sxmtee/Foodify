@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:foodify/home_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -15,8 +14,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(Duration(seconds: 6), () {
-      var route = MaterialPageRoute(builder: (context) => HomePage());
-      Navigator.push(context, route);
+      // var route = MaterialPageRoute(builder: (context) => HomePage());
+      // Navigator.push(context, route);
     });
   }
 
