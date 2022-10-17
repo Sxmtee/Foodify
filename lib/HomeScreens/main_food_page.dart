@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:foodify/HomeScreens/food_body.dart';
 import 'package:foodify/Utils/colors.dart';
 import 'package:foodify/Widgets/bigText.dart';
 import 'package:foodify/Widgets/smallText.dart';
@@ -33,7 +34,17 @@ class _MainFoodPageState extends State<MainFoodPage> {
                         text: "Nigeria",
                         color: AppColors.mainColor,
                       ),
-                      SmallText(text: "Lagos")
+                      Row(
+                        children: [
+                          SmallText(
+                            text: "Lagos",
+                            color: Colors.black54,
+                          ),
+                          IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.arrow_drop_down_rounded))
+                        ],
+                      )
                     ],
                   ),
                   Center(
@@ -54,6 +65,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ),
             ),
           ),
+          FoodPageBody()
         ],
       ),
     );
