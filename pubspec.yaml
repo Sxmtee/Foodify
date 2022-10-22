@@ -37,6 +37,7 @@ dependencies:
   gradients: ^0.1.1+1
   carousel_slider: ^4.1.1
   carousel_indicator: ^1.0.6
+  get: ^4.1.4
 
 dev_dependencies:
   flutter_test:

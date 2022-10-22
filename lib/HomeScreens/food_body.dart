@@ -6,6 +6,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:foodify/Utils/colors.dart';
+import 'package:foodify/Utils/dimensions.dart';
 import 'package:foodify/Widgets/bigText.dart';
 import 'package:foodify/Widgets/iconText.dart';
 import 'package:foodify/Widgets/smallText.dart';
@@ -60,7 +61,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     return Stack(
       children: [
         Container(
-            height: 220,
+            height: Dimensions.pageViewContainer,
             //margin: EdgeInsets.only(left: 10, right: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
@@ -71,7 +72,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            height: 120,
+            height: Dimensions.pageViewTextContainer,
             margin: EdgeInsets.only(left: 30, right: 30, bottom: 30),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
@@ -128,6 +129,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     height: 20,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconAndText(
                           icon: Icons.circle_sharp,
