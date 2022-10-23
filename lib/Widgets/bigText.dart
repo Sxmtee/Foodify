@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:foodify/Utils/dimensions.dart';
 
 class BigText extends StatelessWidget {
   Color? color;
@@ -13,7 +14,7 @@ class BigText extends StatelessWidget {
       this.color = const Color(0xFF332d2b),
       required this.text,
       this.overFlow = TextOverflow.ellipsis,
-      this.size = 20})
+      this.size = 0})
       : super(key: key);
 
   @override
@@ -26,7 +27,7 @@ class BigText extends StatelessWidget {
           color: color,
           fontWeight: FontWeight.w400,
           fontFamily: "Roboto",
-          fontSize: size),
+          fontSize: size == 0 ? Dimensions.font20 : size),
     );
   }
 }

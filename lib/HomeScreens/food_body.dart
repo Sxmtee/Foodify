@@ -28,7 +28,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       children: [
         Container(
             //color: Colors.red,
-            height: 300,
+            height: Dimensions.pageView,
             child: CarouselSlider.builder(
                 carouselController: controller,
                 itemCount: 5,
@@ -64,7 +64,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             height: Dimensions.pageViewContainer,
             //margin: EdgeInsets.only(left: 10, right: 10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(Dimensions.radius30),
                 color: AppColors.mainColor,
                 image: DecorationImage(
                     fit: BoxFit.cover,
@@ -73,9 +73,12 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           alignment: Alignment.bottomCenter,
           child: Container(
             height: Dimensions.pageViewTextContainer,
-            margin: EdgeInsets.only(left: 30, right: 30, bottom: 30),
+            margin: EdgeInsets.only(
+                left: Dimensions.width30,
+                right: Dimensions.width30,
+                bottom: Dimensions.height30),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(Dimensions.radius30),
                 color: AppColors.allWhite,
                 boxShadow: [
                   BoxShadow(
@@ -93,14 +96,16 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   ),
                 ]),
             child: Container(
-              padding: EdgeInsets.only(top: 15, left: 15, right: 15),
+              padding: EdgeInsets.only(
+                  top: Dimensions.height15, left: 15, right: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   BigText(text: "Chinese Slide"),
                   SizedBox(
-                    height: 10,
+                    height: Dimensions.height10,
                   ),
+                  //comment section
                   Row(
                     children: [
                       Wrap(
@@ -126,8 +131,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     ],
                   ),
                   SizedBox(
-                    height: 20,
+                    height: Dimensions.height20,
                   ),
+                  //Time and Distance
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
