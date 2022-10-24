@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:foodify/HomeScreens/food_body.dart';
+import 'package:foodify/Screens/HomeScreens/food_body.dart';
 import 'package:foodify/Utils/colors.dart';
 import 'package:foodify/Utils/dimensions.dart';
 import 'package:foodify/Widgets/bigText.dart';
@@ -19,7 +19,7 @@ class MainFoodPage extends StatefulWidget {
 class _MainFoodPageState extends State<MainFoodPage> {
   @override
   Widget build(BuildContext context) {
-    // print("current height is" + MediaQuery.of(context).size.height.toString());
+    // print("current height is" + MediaQuery.of(context).size.width.toString());
     return Scaffold(
       body: Column(
         children: [
@@ -74,7 +74,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ),
             ),
           ),
-          FoodPageBody()
+          Expanded(child: SingleChildScrollView(child: FoodPageBody()))
         ],
       ),
     );
