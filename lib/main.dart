@@ -3,10 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:foodify/Screens/HomeScreens/main_food_page.dart';
 import 'package:foodify/splash_screen.dart';
 import 'package:get/get.dart';
+import 'package:foodify/Helper/dependencies.dart' as dep;
 
-void main() {
-  SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dep.init();
   runApp(const MyApp());
 }
 

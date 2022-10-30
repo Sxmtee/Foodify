@@ -6,6 +6,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:foodify/Screens/DetailScreens/carousel_food_details.dart';
+import 'package:foodify/Screens/DetailScreens/popular_food_details.dart';
 import 'package:foodify/Utils/colors.dart';
 import 'package:foodify/Utils/dimensions.dart';
 import 'package:foodify/Widgets/bigText.dart';
@@ -93,84 +94,91 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           ),
         ),
         //Listview of Food and Images
-        ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: 10,
-            itemBuilder: ((context, index) {
-              return Container(
-                margin: EdgeInsets.only(
-                    left: Dimensions.width20,
-                    right: Dimensions.width20,
-                    bottom: Dimensions.height10),
-                child: Row(
-                  children: [
-                    //Image in the row
-                    Container(
-                      width: Dimensions.listViewImgSizeW,
-                      height: Dimensions.listViewImgSizeH,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(Dimensions.radius20),
-                          color: Colors.white38,
-                          image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage("assets/Image/king.jpg"))),
-                    ),
-                    //Text in the row
-                    Expanded(
-                      child: Container(
-                        height: Dimensions.listViewTextSize,
+        GestureDetector(
+          onTap: () {
+            var route = MaterialPageRoute(
+                builder: (BuildContext context) => PopularFoodDetails());
+            Navigator.push(context, route);
+          },
+          child: ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: 10,
+              itemBuilder: ((context, index) {
+                return Container(
+                  margin: EdgeInsets.only(
+                      left: Dimensions.width20,
+                      right: Dimensions.width20,
+                      bottom: Dimensions.height10),
+                  child: Row(
+                    children: [
+                      //Image in the row
+                      Container(
+                        width: Dimensions.listViewImgSizeW,
+                        height: Dimensions.listViewImgSizeH,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(Dimensions.radius20),
-                              bottomRight:
-                                  Radius.circular(Dimensions.radius20)),
-                          color: AppColors.allWhite,
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              left: Dimensions.width10,
-                              right: Dimensions.width10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              BigText(text: "Nutritious fruit meal in china"),
-                              SizedBox(
-                                height: Dimensions.height10,
-                              ),
-                              SmallText(text: "With chinese characteristics"),
-                              SizedBox(
-                                height: Dimensions.height10,
-                              ),
-                              Row(
-                                // mainAxisAlignment:
-                                //     MainAxisAlignment.spaceBetween,
-                                children: [
-                                  IconAndText(
-                                      icon: Icons.circle_sharp,
-                                      text: "Normal",
-                                      iconColor: AppColors.iconColor1),
-                                  IconAndText(
-                                      icon: Icons.location_on,
-                                      text: "1.7km",
-                                      iconColor: AppColors.mainColor),
-                                  IconAndText(
-                                      icon: Icons.access_time_rounded,
-                                      text: "32min",
-                                      iconColor: AppColors.iconColor2),
-                                ],
-                              )
-                            ],
+                            borderRadius:
+                                BorderRadius.circular(Dimensions.radius20),
+                            color: Colors.white38,
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage("assets/Image/king.jpg"))),
+                      ),
+                      //Text in the row
+                      Expanded(
+                        child: Container(
+                          height: Dimensions.listViewTextSize,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(Dimensions.radius20),
+                                bottomRight:
+                                    Radius.circular(Dimensions.radius20)),
+                            color: AppColors.allWhite,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: Dimensions.width10,
+                                right: Dimensions.width10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                BigText(text: "Nutritious fruit meal in china"),
+                                SizedBox(
+                                  height: Dimensions.height10,
+                                ),
+                                SmallText(text: "With chinese characteristics"),
+                                SizedBox(
+                                  height: Dimensions.height10,
+                                ),
+                                Row(
+                                  // mainAxisAlignment:
+                                  //     MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    IconAndText(
+                                        icon: Icons.circle_sharp,
+                                        text: "Normal",
+                                        iconColor: AppColors.iconColor1),
+                                    IconAndText(
+                                        icon: Icons.location_on,
+                                        text: "1.7km",
+                                        iconColor: AppColors.mainColor),
+                                    IconAndText(
+                                        icon: Icons.access_time_rounded,
+                                        text: "32min",
+                                        iconColor: AppColors.iconColor2),
+                                  ],
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              );
-            })),
+                    ],
+                  ),
+                );
+              })),
+        ),
       ],
     );
   }
