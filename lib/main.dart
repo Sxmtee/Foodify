@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:foodify/Controllers/popular_product_controllers.dart';
+import 'package:foodify/Controllers/recommended_product_controller.dart';
 import 'package:foodify/Screens/HomeScreens/main_food_page.dart';
 import 'package:get/get.dart';
 import 'package:foodify/Helper/dependencies.dart' as dep;
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.find<PopularProductController>().getPopularProductList();
+    Get.find<RecommendedProductController>().getRecommendedProductList();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Foodify",
