@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:foodify/Controllers/popular_product_controllers.dart';
 import 'package:foodify/Screens/DetailScreens/carousel_food_details.dart';
 import 'package:foodify/Screens/DetailScreens/popular_food_details.dart';
 import 'package:foodify/Utils/colors.dart';
@@ -13,6 +14,7 @@ import 'package:foodify/Widgets/bigText.dart';
 import 'package:foodify/Widgets/foodColumns.dart';
 import 'package:foodify/Widgets/iconText.dart';
 import 'package:foodify/Widgets/smallText.dart';
+import 'package:get/get.dart';
 
 class FoodPageBody extends StatefulWidget {
   const FoodPageBody({Key? key}) : super(key: key);
@@ -30,40 +32,44 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     return Column(
       children: [
         //Slider Section
-        InkWell(
-          onTap: () {
-            var route = MaterialPageRoute(
-                builder: (BuildContext context) => CarouselFoodDetails());
-            Navigator.push(context, route);
-          },
-          child: Container(
-              //color: Colors.red,
-              height: Dimensions.pageView,
-              child: CarouselSlider.builder(
-                  carouselController: controller,
-                  itemCount: 5,
-                  itemBuilder: ((context, index, realIndex) {
-                    return _buildPageItem(index);
-                  }),
-                  options: CarouselOptions(
-                    viewportFraction: 0.85,
-                    height: 300,
-                    autoPlay: true,
-                    enlargeCenterPage: true,
-                    onPageChanged: (index, reason) {
-                      setState(() {
-                        currentPage = index;
-                      });
-                    },
-                  ))),
-        ),
-        CarouselIndicator(
-          width: 10,
-          count: 5,
-          index: currentPage,
-          color: AppColors.mainBlackColor,
-          activeColor: AppColors.mainColor,
-        ),
+        GetBuilder<PopularProductController>(builder: (popularProducts) {
+          return InkWell(
+            onTap: () {
+              var route = MaterialPageRoute(
+                  builder: (BuildContext context) => CarouselFoodDetails());
+              Navigator.push(context, route);
+            },
+            child: Container(
+                //color: Colors.red,
+                height: Dimensions.pageView,
+                child: CarouselSlider.builder(
+                    carouselController: controller,
+                    itemCount: popularProducts.popularProductList.length,
+                    itemBuilder: ((context, index, realIndex) {
+                      return _buildPageItem(index);
+                    }),
+                    options: CarouselOptions(
+                      viewportFraction: 0.85,
+                      height: 300,
+                      autoPlay: true,
+                      enlargeCenterPage: true,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          currentPage = index;
+                        });
+                      },
+                    ))),
+          );
+        }),
+        GetBuilder<PopularProductController>(builder: (popularProducts) {
+          return CarouselIndicator(
+            width: 10,
+            count: popularProducts.popularProductList.length,
+            index: currentPage,
+            color: AppColors.mainBlackColor,
+            activeColor: AppColors.mainColor,
+          );
+        }),
         //Popular Text
         SizedBox(
           height: Dimensions.height30,
