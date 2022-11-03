@@ -2,17 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:foodify/Controllers/recommended_product_controller.dart';
+import 'package:foodify/Routes/route_helper.dart';
+import 'package:foodify/Utils/appConstants.dart';
 import 'package:foodify/Utils/colors.dart';
 import 'package:foodify/Utils/dimensions.dart';
 import 'package:foodify/Widgets/appIcon.dart';
 import 'package:foodify/Widgets/bigText.dart';
 import 'package:foodify/Widgets/expandableText.dart';
+import 'package:get/get.dart';
 
 class PopularFoodDetails extends StatelessWidget {
-  const PopularFoodDetails({Key? key}) : super(key: key);
+  final int pageId;
+  const PopularFoodDetails({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<RecommendedProductController>().recommendedProductList[pageId];
+
     return Scaffold(
       backgroundColor: AppColors.allWhite,
       body: CustomScrollView(
@@ -23,7 +31,11 @@ class PopularFoodDetails extends StatelessWidget {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppIcon(icon: Icons.cancel),
+                GestureDetector(
+                    onTap: () {
+                      Get.toNamed(RouteHelper.getInitial());
+                    },
+                    child: AppIcon(icon: Icons.cancel)),
                 AppIcon(icon: Icons.shopping_cart)
               ],
             ),
@@ -32,7 +44,7 @@ class PopularFoodDetails extends StatelessWidget {
               child: Container(
                 child: Center(
                     child:
-                        BigText(size: Dimensions.font26, text: "Chinese Side")),
+                        BigText(size: Dimensions.font26, text: product.name!)),
                 width: double.maxFinite,
                 padding: EdgeInsets.only(top: 5, bottom: 10),
                 decoration: BoxDecoration(
@@ -46,8 +58,8 @@ class PopularFoodDetails extends StatelessWidget {
             backgroundColor: AppColors.yellowColor,
             expandedHeight: Dimensions.pageView,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                "assets/Image/king.jpg",
+              background: Image.network(
+                AppConstants.BASE_URI + AppConstants.UPLOAD_URL + product.img!,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
@@ -59,8 +71,7 @@ class PopularFoodDetails extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: Dimensions.width20),
                   child: ExpandableText(
-                    text:
-                        "Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with fried onions, fresh coriander cilantro, then parboiled lightly spiced rice chicken Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with fried onions, fresh coriander Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with fried onions, fresh coriander Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with fried onions, fresh coriander",
+                    text: product.description!,
                   ),
                 ),
               ],
@@ -84,7 +95,7 @@ class PopularFoodDetails extends StatelessWidget {
                     iconColor: AppColors.allWhite,
                     icon: Icons.remove),
                 BigText(
-                  text: "\$12.88 " + " X " + " 0 ",
+                  text: "\$ ${product.price!} X  0 ",
                   color: AppColors.mainBlackColor,
                   size: Dimensions.font26,
                 ),

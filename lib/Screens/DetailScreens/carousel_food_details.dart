@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:foodify/Controllers/popular_product_controllers.dart';
+import 'package:foodify/Routes/route_helper.dart';
 import 'package:foodify/Screens/HomeScreens/main_food_page.dart';
+import 'package:foodify/Utils/appConstants.dart';
 import 'package:foodify/Utils/colors.dart';
 import 'package:foodify/Utils/dimensions.dart';
 import 'package:foodify/Widgets/appIcon.dart';
@@ -11,12 +14,17 @@ import 'package:foodify/Widgets/expandableText.dart';
 import 'package:foodify/Widgets/foodColumns.dart';
 import 'package:foodify/Widgets/iconText.dart';
 import 'package:foodify/Widgets/smallText.dart';
+import 'package:get/get.dart';
 
 class CarouselFoodDetails extends StatelessWidget {
-  const CarouselFoodDetails({Key? key}) : super(key: key);
+  final int pageId;
+  const CarouselFoodDetails({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<PopularProductController>().popularProductList[pageId];
+
     return Scaffold(
       backgroundColor: AppColors.allWhite,
       body: Stack(
@@ -31,7 +39,9 @@ class CarouselFoodDetails extends StatelessWidget {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage("assets/Image/pizza.jpg"))),
+                        image: NetworkImage(AppConstants.BASE_URI +
+                            AppConstants.UPLOAD_URL +
+                            product.img!))),
               )),
           //icon widgets
           Positioned(
@@ -41,11 +51,9 @@ class CarouselFoodDetails extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  InkWell(
+                  GestureDetector(
                       onTap: () {
-                        var route = MaterialPageRoute(
-                            builder: (BuildContext context) => MainFoodPage());
-                        Navigator.push(context, route);
+                        Get.toNamed(RouteHelper.getInitial());
                       },
                       child: AppIcon(icon: Icons.arrow_back_ios_rounded)),
                   AppIcon(icon: Icons.shopping_cart_outlined)
@@ -71,7 +79,7 @@ class CarouselFoodDetails extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       FoodColumns(
-                        text: "Chinese Side",
+                        text: product.name!,
                       ),
                       SizedBox(
                         height: Dimensions.height20,
@@ -82,9 +90,7 @@ class CarouselFoodDetails extends StatelessWidget {
                       ),
                       Expanded(
                         child: SingleChildScrollView(
-                          child: ExpandableText(
-                              text:
-                                  "Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with fried onions, fresh coriander cilantro, then parboiled lightly spiced rice chicken,"),
+                          child: ExpandableText(text: product.description!),
                         ),
                       )
                     ],
@@ -135,7 +141,7 @@ class CarouselFoodDetails extends StatelessWidget {
                   horizontal: Dimensions.height20,
                   vertical: Dimensions.width20),
               child: BigText(
-                text: "\$10 | Add to cart",
+                text: "\$ ${product.price!} | Add to cart",
                 color: AppColors.allWhite,
               ),
               decoration: BoxDecoration(
