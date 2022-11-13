@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:foodify/Controllers/cart_controller.dart';
 import 'package:foodify/Controllers/popular_product_controllers.dart';
 import 'package:foodify/Routes/route_helper.dart';
 import 'package:foodify/Screens/HomeScreens/main_food_page.dart';
@@ -24,7 +25,8 @@ class CarouselFoodDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     var product =
         Get.find<PopularProductController>().popularProductList[pageId];
-
+    Get.find<PopularProductController>()
+        .initProduct(Get.find<CartController>());
     return Scaffold(
         backgroundColor: AppColors.allWhite,
         body: Stack(
@@ -154,9 +156,14 @@ class CarouselFoodDetails extends StatelessWidget {
                     padding: EdgeInsets.symmetric(
                         horizontal: Dimensions.height20,
                         vertical: Dimensions.width20),
-                    child: BigText(
-                      text: "\$ ${product.price!} | Add to cart",
-                      color: AppColors.allWhite,
+                    child: GestureDetector(
+                      onTap: () {
+                        popularProduct.addItem(product);
+                      },
+                      child: BigText(
+                        text: "\$ ${product.price!} | Add to cart",
+                        color: AppColors.allWhite,
+                      ),
                     ),
                     decoration: BoxDecoration(
                         borderRadius:
