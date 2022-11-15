@@ -1,5 +1,6 @@
 import 'package:foodify/Controllers/cart_controller.dart';
 import 'package:foodify/Data/Repository/popular_product_repo.dart';
+import 'package:foodify/Models/cart_model.dart';
 import 'package:foodify/Models/products_model.dart';
 import 'package:foodify/Utils/colors.dart';
 import 'package:get/get.dart';
@@ -78,5 +79,9 @@ class PopularProductController extends GetxController {
 
   int get totalItems {
     return _cart.totalItems;
+  }
+
+  List<CartModel> get getItems {
+    return _cart.getItems;
   }
 }

@@ -6,6 +6,7 @@ import 'package:foodify/Controllers/cart_controller.dart';
 import 'package:foodify/Controllers/popular_product_controllers.dart';
 import 'package:foodify/Controllers/recommended_product_controller.dart';
 import 'package:foodify/Routes/route_helper.dart';
+import 'package:foodify/Screens/CartScreens/cart_page.dart';
 import 'package:foodify/Utils/appConstants.dart';
 import 'package:foodify/Utils/colors.dart';
 import 'package:foodify/Utils/dimensions.dart';
@@ -47,11 +48,16 @@ class PopularFoodDetails extends StatelessWidget {
                             ? Positioned(
                                 right: 0,
                                 top: 0,
-                                child: AppIcon(
-                                  icon: Icons.circle,
-                                  size: 20,
-                                  iconColor: Colors.transparent,
-                                  backgroundColor: AppColors.mainColor,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => CartPage());
+                                  },
+                                  child: AppIcon(
+                                    icon: Icons.circle,
+                                    size: 20,
+                                    iconColor: Colors.transparent,
+                                    backgroundColor: AppColors.mainColor,
+                                  ),
                                 ),
                               )
                             : Container(),

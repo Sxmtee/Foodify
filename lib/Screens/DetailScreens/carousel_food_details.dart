@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:foodify/Controllers/cart_controller.dart';
 import 'package:foodify/Controllers/popular_product_controllers.dart';
 import 'package:foodify/Routes/route_helper.dart';
+import 'package:foodify/Screens/CartScreens/cart_page.dart';
 import 'package:foodify/Screens/HomeScreens/main_food_page.dart';
 import 'package:foodify/Utils/appConstants.dart';
 import 'package:foodify/Utils/colors.dart';
@@ -67,11 +68,16 @@ class CarouselFoodDetails extends StatelessWidget {
                               ? Positioned(
                                   right: 0,
                                   top: 0,
-                                  child: AppIcon(
-                                    icon: Icons.circle,
-                                    size: 20,
-                                    iconColor: Colors.transparent,
-                                    backgroundColor: AppColors.mainColor,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Get.to(() => CartPage());
+                                    },
+                                    child: AppIcon(
+                                      icon: Icons.circle,
+                                      size: 20,
+                                      iconColor: Colors.transparent,
+                                      backgroundColor: AppColors.mainColor,
+                                    ),
                                   ),
                                 )
                               : Container(),
