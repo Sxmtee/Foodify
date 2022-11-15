@@ -25,6 +25,7 @@ class CartPage extends StatelessWidget {
               left: Dimensions.width20,
               right: Dimensions.width20,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppIcon(
                     icon: Icons.arrow_back_ios,
