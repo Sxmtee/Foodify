@@ -21,3 +21,5 @@ A new Flutter Food Ordering/Delivery App (Still-in-progress) project.
 * See order details
 * Update order status
 
+##State Management
+* Getx State Management
